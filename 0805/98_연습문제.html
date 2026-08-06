@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!--
   ═══════════════════════════════════════════════════════════════
   99_연습문제 — 7일차 (Transition · Transform · Animation)
@@ -18,113 +18,158 @@
   * 다 풀면 99_연습문제_정답.html과 비교해 보세요.
 -->
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7일차 연습문제 — Transition · Transform · Animation</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7일차 연습문제 — Transition · Transform · Animation</title>
 
-  <style>
-    /* ── 기본 제공 스타일 (문제 아님 — 수정 금지) ── */
-    body { font-family: "맑은 고딕", "Malgun Gothic", sans-serif; margin: 20px; }
-    section { border-bottom: 1px dashed #ccc; padding: 16px 8px; }
-    h2 { font-size: 17px; color: #333; }
-    .hint-text { color: #888; font-size: 13px; }
+    <style>
+      /* ── 기본 제공 스타일 (문제 아님 — 수정 금지) ── */
+      body {
+        font-family: "맑은 고딕", "Malgun Gothic", sans-serif;
+        margin: 20px;
+      }
+      section {
+        border-bottom: 1px dashed #ccc;
+        padding: 16px 8px;
+      }
+      h2 {
+        font-size: 17px;
+        color: #333;
+      }
+      .hint-text {
+        color: #888;
+        font-size: 13px;
+      }
 
-    /* 문제 1 제공: 예매 버튼 모양 */
-    .book-btn {
-      background-color: #2563eb; color: white;
-      border: none; padding: 10px 20px; border-radius: 6px;
-      font-size: 15px; cursor: pointer;
-    }
-    /* 문제 2 제공: 영화 카드 모양 */
-    .lift-card {
-      width: 240px; border: 2px solid #1971c2; border-radius: 10px;
-      padding: 14px; background-color: #f8fbff;
-    }
-    .lift-card h3 { font-size: 16px; margin: 0 0 6px; }
-    /* 문제 3 제공: 재생 버튼(원형) 모양 */
-    .play-btn {
-      display: inline-block;
-      width: 64px; height: 64px; border-radius: 32px;
-      background-color: #495057; color: white;
-      text-align: center; line-height: 64px; font-weight: bold;
-    }
-    /* 문제 4 제공: 관객 입장 트랙 */
-    .race { border: 2px dashed #868e96; padding: 10px; }
-    .runner {
-      width: 90px; margin-bottom: 6px;
-      background-color: #4dabf7; border: 2px solid #1971c2;
-      color: white; text-align: center; padding: 8px 0; font-size: 14px;
-    }
-    /* 문제 5 제공: 신규 소식 알림 모양 */
-    .alert-new {
-      background-color: #fff3bf; border-left: 6px solid #f08c00;
-      padding: 10px 14px;
-    }
-    /* 문제 6 제공: 매점 진열대와 팝콘 상자 */
-    .counter { background-color: #dee2e6; padding: 10px; border-radius: 6px; }
-    .snack-box {
-      width: 70px; background-color: #f08c00; border: 2px solid #e8590c;
-      color: white; text-align: center; padding: 10px 0; font-weight: bold;
-    }
-    /* 문제 7 제공: 매진 임박 카드 · 배지 · 로딩 바 모양 */
-    .warn-card {
-      width: 280px; border: 2px solid #e03131; border-radius: 12px;
-      padding: 14px; background-color: #fff5f5;
-    }
-    .warn-card h3 { font-size: 16px; margin: 8px 0 4px; }
-    .warn-card p { margin: 0; font-size: 14px; color: #555; }
-    .warn-badge {
-      display: inline-block;
-      background-color: crimson; color: white;
-      padding: 2px 10px; border-radius: 10px; font-size: 13px;
-    }
-    .loading-bar {
-      height: 12px; border-radius: 6px;
-      background-color: #e0e0e0; margin-top: 10px;
-    }
+      /* 문제 1 제공: 예매 버튼 모양 */
+      .book-btn {
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      /* 문제 2 제공: 영화 카드 모양 */
+      .lift-card {
+        width: 240px;
+        border: 2px solid #1971c2;
+        border-radius: 10px;
+        padding: 14px;
+        background-color: #f8fbff;
+      }
+      .lift-card h3 {
+        font-size: 16px;
+        margin: 0 0 6px;
+      }
+      /* 문제 3 제공: 재생 버튼(원형) 모양 */
+      .play-btn {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        border-radius: 32px;
+        background-color: #495057;
+        color: white;
+        text-align: center;
+        line-height: 64px;
+        font-weight: bold;
+      }
+      /* 문제 4 제공: 관객 입장 트랙 */
+      .race {
+        border: 2px dashed #868e96;
+        padding: 10px;
+      }
+      .runner {
+        width: 90px;
+        margin-bottom: 6px;
+        background-color: #4dabf7;
+        border: 2px solid #1971c2;
+        color: white;
+        text-align: center;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+      /* 문제 5 제공: 신규 소식 알림 모양 */
+      .alert-new {
+        background-color: #fff3bf;
+        border-left: 6px solid #f08c00;
+        padding: 10px 14px;
+      }
+      /* 문제 6 제공: 매점 진열대와 팝콘 상자 */
+      .counter {
+        background-color: #dee2e6;
+        padding: 10px;
+        border-radius: 6px;
+      }
+      .snack-box {
+        width: 70px;
+        background-color: #f08c00;
+        border: 2px solid #e8590c;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        font-weight: bold;
+      }
+      /* 문제 7 제공: 매진 임박 카드 · 배지 · 로딩 바 모양 */
+      .warn-card {
+        width: 280px;
+        border: 2px solid #e03131;
+        border-radius: 12px;
+        padding: 14px;
+        background-color: #fff5f5;
+      }
+      .warn-card h3 {
+        font-size: 16px;
+        margin: 8px 0 4px;
+      }
+      .warn-card p {
+        margin: 0;
+        font-size: 14px;
+        color: #555;
+      }
+      .warn-badge {
+        display: inline-block;
+        background-color: crimson;
+        color: white;
+        padding: 2px 10px;
+        border-radius: 10px;
+        font-size: 13px;
+      }
+      .loading-bar {
+        height: 12px;
+        border-radius: 6px;
+        background-color: #e0e0e0;
+        margin-top: 10px;
+      }
 
-    /* ═══ 문제 1 ═══ */
-    /* 문제 1: 여기에 작성 */
+      /* ═══ 문제 1 ═══ */
+      /* 문제 1: 여기에 작성 */
 
+      /* ═══ 문제 2 ═══ */
+      /* 문제 2: 여기에 작성 */
 
+      /* ═══ 문제 3 ═══ */
+      /* 문제 3: 여기에 작성 */
 
-    /* ═══ 문제 2 ═══ */
-    /* 문제 2: 여기에 작성 */
+      /* ═══ 문제 4 ═══ */
+      /* 문제 4: 여기에 작성 */
 
+      /* ═══ 문제 5 ═══ */
+      /* 문제 5: 여기에 작성 */
 
+      /* ═══ 문제 6 ═══ */
+      /* 문제 6: 여기에 작성 */
 
-    /* ═══ 문제 3 ═══ */
-    /* 문제 3: 여기에 작성 */
+      /* ═══ 문제 7 [도전] ═══ */
+      /* 문제 7: 여기에 작성 */
+    </style>
+  </head>
+  <body>
+    <h1>영화관 홈페이지에 생기 불어넣기</h1>
 
-
-
-    /* ═══ 문제 4 ═══ */
-    /* 문제 4: 여기에 작성 */
-
-
-
-    /* ═══ 문제 5 ═══ */
-    /* 문제 5: 여기에 작성 */
-
-
-
-    /* ═══ 문제 6 ═══ */
-    /* 문제 6: 여기에 작성 */
-
-
-
-    /* ═══ 문제 7 [도전] ═══ */
-    /* 문제 7: 여기에 작성 */
-
-
-
-  </style>
-</head>
-<body>
-  <h1>영화관 홈페이지에 생기 불어넣기</h1>
-
-  <!-- ═══ 문제 1 ═══════════════════════════════════════════
+    <!-- ═══ 문제 1 ═══════════════════════════════════════════
     [요구사항]
     1) .book-btn 에 개별 속성 2개로 전환을 걸어 두세요.
        - 전환 대상 속성: background-color  (transition-property)
@@ -138,12 +183,12 @@
     실수 주의: transition은 :hover 쪽이 아니라 "평소 상태"에 씁니다.
     (hover에 쓰면 마우스를 뗄 때 뚝 끊깁니다!)
   -->
-  <section>
-    <h2>문제 1. transition — 부드러운 예매 버튼</h2>
-    <button class="book-btn">지금 예매하기</button>
-  </section>
+    <section>
+      <h2>문제 1. transition — 부드러운 예매 버튼</h2>
+      <button class="book-btn">지금 예매하기</button>
+    </section>
 
-  <!-- ═══ 문제 2 ═══════════════════════════════════════════
+    <!-- ═══ 문제 2 ═══════════════════════════════════════════
     [요구사항]
     1) .lift-card 에 단축 속성으로 transform 전환 0.3초를 걸고
     2) 마우스를 올리면 카드가 "위로 8px" 떠오르게 하세요. (translateY)
@@ -153,15 +198,15 @@
     02_CSS_06_모션과_인터랙션_개념코드 폴더의 섹션01 파일(translate), 섹션08 파일(단축)
     위로 이동은 translateY(-8px) — Y축 음수가 위쪽!
   -->
-  <section>
-    <h2>문제 2. transform — 떠오르는 영화 카드</h2>
-    <div class="lift-card">
-      <h3>우주 대모험</h3>
-      <p>평점 9.2 · 절찬 상영 중</p>
-    </div>
-  </section>
+    <section>
+      <h2>문제 2. transform — 떠오르는 영화 카드</h2>
+      <div class="lift-card">
+        <h3>우주 대모험</h3>
+        <p>평점 9.2 · 절찬 상영 중</p>
+      </div>
+    </section>
 
-  <!-- ═══ 문제 3 ═══════════════════════════════════════════
+    <!-- ═══ 문제 3 ═══════════════════════════════════════════
     [요구사항]
     1) .play-btn 에 transform 전환 0.5초를 걸고
     2) 마우스를 올리면 "시계방향 90도 회전 + 1.2배 확대"가
@@ -173,12 +218,12 @@
     실수 주의: transform을 두 줄로 나눠 쓰면 마지막 줄만 적용됩니다!
     rotate(90deg) scale(1.2) 처럼 "한 줄"에 나열하세요.
   -->
-  <section>
-    <h2>문제 3. transform 조합 — 도는 재생 버튼</h2>
-    <div class="play-btn">재생</div>
-  </section>
+    <section>
+      <h2>문제 3. transform 조합 — 도는 재생 버튼</h2>
+      <div class="play-btn">재생</div>
+    </section>
 
-  <!-- ═══ 문제 4 ═══════════════════════════════════════════
+    <!-- ═══ 문제 4 ═══════════════════════════════════════════
     [요구사항]  관객 4명의 입장 걸음걸이를 비교합니다.
     1) .runner 공통: transform 전환 1초
     2) .race 에 마우스를 올리면 "모든" .runner가
@@ -193,18 +238,20 @@
     02_CSS_06_모션과_인터랙션_개념코드 폴더의 섹션10 파일(timing-function), 섹션11 파일(delay)
     트리거 작성법은 개념코드 섹션10 파일의 ".race:hover .tf" 패턴 참고!
   -->
-  <section>
-    <h2>문제 4. timing-function — 관객 입장 비교</h2>
-    <div class="race">
-      <div class="runner r-linear">관객-1</div>
-      <div class="runner r-easein">관객-2</div>
-      <div class="runner r-easeout">관객-3</div>
-      <div class="runner r-delay">관객-4</div>
-    </div>
-    <p class="hint-text">확인: 트랙에 마우스를 올리면 4명이 다른 리듬으로 입장!</p>
-  </section>
+    <section>
+      <h2>문제 4. timing-function — 관객 입장 비교</h2>
+      <div class="race">
+        <div class="runner r-linear">관객-1</div>
+        <div class="runner r-easein">관객-2</div>
+        <div class="runner r-easeout">관객-3</div>
+        <div class="runner r-delay">관객-4</div>
+      </div>
+      <p class="hint-text">
+        확인: 트랙에 마우스를 올리면 4명이 다른 리듬으로 입장!
+      </p>
+    </section>
 
-  <!-- ═══ 문제 5 ═══════════════════════════════════════════
+    <!-- ═══ 문제 5 ═══════════════════════════════════════════
     [요구사항]
     1) 투명(opacity 0)에서 선명(opacity 1)으로 변하는
        @keyframes fade-in 을 정의하세요. (from / to)
@@ -216,13 +263,15 @@
     02_CSS_06_모션과_인터랙션_개념코드 폴더의 섹션12 파일(@keyframes + animation)
     실수 주의: duration을 빼면 기본 0초라서 아무것도 재생되지 않습니다!
   -->
-  <section>
-    <h2>문제 5. @keyframes — 서서히 나타나는 신규 소식</h2>
-    <div class="alert-new">신규 소식 — 이번 주 개봉작 예매가 시작되었습니다.</div>
-    <p class="hint-text">확인: F5를 누르면 알림이 스르륵 나타나면 성공!</p>
-  </section>
+    <section>
+      <h2>문제 5. @keyframes — 서서히 나타나는 신규 소식</h2>
+      <div class="alert-new">
+        신규 소식 — 이번 주 개봉작 예매가 시작되었습니다.
+      </div>
+      <p class="hint-text">확인: F5를 누르면 알림이 스르륵 나타나면 성공!</p>
+    </section>
 
-  <!-- ═══ 문제 6 ═══════════════════════════════════════════
+    <!-- ═══ 문제 6 ═══════════════════════════════════════════
     [요구사항]
     1) 제자리(translateX 0)에서 오른쪽 220px까지 이동하는
        @keyframes move-box 를 정의하세요.
@@ -235,14 +284,14 @@
     02_CSS_06_모션과_인터랙션_개념코드 폴더의 섹션13 파일(반복), 섹션14 파일(단축 속성)
     단축 순서: 이름 시간 타이밍함수 (delay 생략 가능) 반복횟수 방향
   -->
-  <section>
-    <h2>문제 6. animation — 매점 진열대 위 팝콘 상자</h2>
-    <div class="counter">
-      <div class="snack-box">팝콘</div>
-    </div>
-  </section>
+    <section>
+      <h2>문제 6. animation — 매점 진열대 위 팝콘 상자</h2>
+      <div class="counter">
+        <div class="snack-box">팝콘</div>
+      </div>
+    </section>
 
-  <!-- ═══ 문제 7 [도전] ═══════════════════════════════════
+    <!-- ═══ 문제 7 [도전] ═══════════════════════════════════
     [요구사항]  움직이는 매진 임박 카드를 완성하세요. (3가지 조합)
     1) 호버 모션: .warn-card 에 transform 전환 0.3초를 걸고,
        올리면 "위로 6px + 1.02배 확대"  (translateY + scale 조합)
@@ -263,15 +312,17 @@
     섹션01 파일(이동), 섹션02 파일(확대), 섹션08 파일(transition), 섹션13 파일(중간 지점),
     섹션15 파일(shimmer — 배경만 움직여야 자리가 흔들리지 않습니다!)
   -->
-  <section>
-    <h2>문제 7. [도전] 깜빡이는 배지 + 호버 카드 + 로딩 바</h2>
-    <div class="warn-card">
-      <span class="warn-badge">매진 임박</span>
-      <h3>우주 대모험 좌석 매진 임박</h3>
-      <p>잔여 좌석이 얼마 남지 않았습니다. 예매율 집계 중...</p>
-      <div class="loading-bar"></div>
-    </div>
-    <p class="hint-text">확인: 배지 깜빡임 + 카드 호버 모션 + 로딩 바 빛 흐름</p>
-  </section>
-</body>
+    <section>
+      <h2>문제 7. [도전] 깜빡이는 배지 + 호버 카드 + 로딩 바</h2>
+      <div class="warn-card">
+        <span class="warn-badge">매진 임박</span>
+        <h3>우주 대모험 좌석 매진 임박</h3>
+        <p>잔여 좌석이 얼마 남지 않았습니다. 예매율 집계 중...</p>
+        <div class="loading-bar"></div>
+      </div>
+      <p class="hint-text">
+        확인: 배지 깜빡임 + 카드 호버 모션 + 로딩 바 빛 흐름
+      </p>
+    </section>
+  </body>
 </html>
