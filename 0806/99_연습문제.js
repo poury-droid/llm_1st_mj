@@ -88,6 +88,8 @@ console.log(`입고 후 재고 :${(stock += 25)}`);
 console.log(`판매 후 재고: ${(stock -= 40)}`);
 console.log(`반품 후 재고: ${(stock -= 40) + 1}`);
 
+stock++;
+console.log(`반품 후 재고 ${stock}`);
 // ═══ 문제 6 ═══ 비교 · 논리 연산자 [응용]
 // (1) 요구사항: 음료 냉장고 채우기 조건을 검사해 true/false 세 줄을 출력하세요.
 //     - 공간 여유: 진열된 음료가 80개 미만인가? (비교 결과를 isSpaceOk 변수에 저장)
@@ -130,5 +132,9 @@ const store = {
   sales: [70, 74, 72],
 };
 // TODO: 여기에 작성
+console.log(`판매 기록 일수: ${store.sales.length}일`);
+console.log(`마지막 날 판매량: ${store.sales[store.sales.length - 1]}개`);
+const avgSales = (store.sales[0] + store.sales[1] + store.sales[2]) / 3;
+console.log(`행복 편의점 (점장 ${store.manager}) 평균 판매량: ${avgSales}`);
 
 // 다 풀었다면 99_연습문제_정답.js 와 비교해 보세요. 수고했습니다!
