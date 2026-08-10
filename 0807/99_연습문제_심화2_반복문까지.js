@@ -5,9 +5,15 @@
 // - 각 문제의 "// TODO: 여기에 작성" 부분을 채우면 (2) 기대 출력과 같은 결과가 나옵니다.
 // - 사용 범위: 08일차 전체 + if·else if·switch·삼항 + for·while·break·continue·중첩 for
 //   (함수, 배열 메소드(push·map·filter), for...of 는 10일차에 배우므로 사용하지 않습니다!)
+//
+// ⏱ 분량 안내 — 전체 11문항, 다 풀면 약 100분입니다. 두 교시 분량이니 나눠서 푸세요.
+//   1교시분 : 워밍업 A~D + 문제 1 ~ 3   (약 50분)  ← 오늘은 여기까지가 목표
+//   2교시분 : 문제 4 ~ 7                (약 50분)  ← 남는 시간·복습·자습용
+//   특히 문제 4(while 두 번)와 문제 6(예측 4덩어리)은 각각 한 문제처럼 보이지만
+//   실제로는 두 문제 분량입니다. 시간이 부족하면 이 둘을 뒤로 미루세요.
 
 // ┌──────────────────────────────────────────────────────────┐
-// │ 워밍업 A~C — 99_연습문제를 풀었다면 여기서 시작하세요.      │
+// │ 워밍업 A~D — 99_연습문제를 풀었다면 여기서 시작하세요.      │
 // │ 문제 1부터가 본 문제입니다. 빠른 학생은 워밍업을 건너뛰어도 │
 // │ 됩니다.                                                    │
 // └──────────────────────────────────────────────────────────┘
@@ -141,6 +147,23 @@ const stocks = [12, 8, 3, 5, 0];
 // (3) 힌트: 섹션11(중첩 for), 섹션13(break), 섹션14(continue), 8일차 섹션13(% 로 홀짝 판별)
 console.log("===== 문제 3 =====");
 // TODO: 여기에 작성
+for (let i = 2; i <= 5; i++) {
+  if (i % 2) {
+    continue;
+  }
+  for (let j = 1; j <= 9; j++) {
+    if (i * j > 20) {
+      break;
+    }
+    console.log(`${i} * ${j} = ${i * j}`);
+  }
+}
+// ┌──────────────────────────────────────────────────────────┐
+// │ ⏱ 여기까지가 1교시 목표 분량입니다.                        │
+// │   아래 문제 4~7 은 다음 교시나 복습 때 이어서 푸세요.       │
+// │   지금 멈춰도 반복문의 핵심(누적·break·continue·중첩)은     │
+// │   이미 다 연습한 상태입니다.                                │
+// └──────────────────────────────────────────────────────────┘
 
 // ═══ 문제 4 ═══ while 로 "언제 끝날지 모르는" 반복 [응용]
 // (1) 요구사항: 통장에 50000원이 있고 매일 3500원씩 씁니다.
@@ -156,7 +179,28 @@ console.log("===== 문제 3 =====");
 // (3) 힌트: 섹션12(while - 증감을 직접 챙겨야 함), 8일차 섹션13(%),
 //     조건이 거짓이 되는 순간 반복이 끝난다는 것을 이용하세요.
 console.log("===== 문제 4 =====");
-// TODO: 여기에 작성
+let balance = 50000;
+let day = 0;
+while (true) {
+  if (balance < 3500) {
+    break;
+  }
+  balance -= 3500;
+  day++;
+}
+console.log(`버틴 일수: ${day}일`);
+console.log(`남은 잔액: ${balance}원`);
+
+let balance2 = 50000;
+let day2 = 0;
+while (balance2 >= 3500) {
+  balance2 -= 3500;
+  day2++;
+  if (day2 % 5 === 0) {
+    balance2 -= 4000;
+  }
+}
+console.log(`(커피 포함) 버틴 일수: ${day2}일`);
 
 // ═══ 문제 5 ═══ [도전] 중첩 for 로 모양 만들기
 // (1) 요구사항: 아래 모양을 중첩 for 로 출력하세요.
@@ -164,16 +208,26 @@ console.log("===== 문제 4 =====");
 //     - console.log 는 한 줄씩만 출력하므로, 안쪽 반복에서는 문자열을 변수에 "누적"하고
 //       한 줄이 완성되면 그때 출력합니다. (문자열도 += 로 이어 붙일 수 있습니다)
 // (2) 기대 출력:
-//     *
-//     **
-//     ***
-//     ****
+//         *
+//        **
+//       ***
+//      ****
 //     *****
 // (3) 힌트: 섹션11(중첩 for), 8일차 섹션14(+=), 8일차 섹션05(문자열 연결).
 //     안쪽 반복 횟수가 바깥 변수에 따라 달라진다는 점이 핵심입니다.
 console.log("===== 문제 5 =====");
 // TODO: 여기에 작성
+for (let i = 1; i <= 5; i++) {
+  let line = " ";
+  for (let j = 1; j <= 5 - i; j++) {
+    line += " ";
+  }
+  for (let j = i; j >= 1; j--) {
+    line += "*";
+  }
 
+  console.log(line);
+}
 // ═══ 문제 6 ═══ [도전] 결과 예측하기 — 반복문의 함정
 // (1) 요구사항: 아래 네 덩어리가 각각 무엇을 출력할지 먼저 종이에 적으세요.
 //     그다음 (가)~(다)의 주석을 풀어 실행하고, 예상과 다른 것은 이유를 설명해 보세요.
@@ -183,16 +237,27 @@ console.log("===== 문제 5 =====");
 //       let point = 0;
 //       for (let i = 1; i <= 3; i++) { let point = 0; point += i; }
 //       console.log(point);
+// let a = 0;
+// if (true) {
+//   a = 2;
+//   console.log(a);
+// }
+// console.log(a);
 //
 //       // (나)
 //       for (let i = 0; i < 5; i++) { if (i === 2) continue; if (i === 4) break; console.log(i); }
 //
 //       // (다)
 //       for (let i = 0; i < 2; i++) { for (let j = 0; j < 3; j++) { if (j === 1) break; console.log(i, j); } }
-//
-//       // (라)  ← 이 덩어리는 에러가 납니다
-//       for (let i = 0; i < 3; i++) { }
-//       console.log(i);
+
+// (라)  ← 이 덩어리는 에러가 납니다
+// for (let i = 0; i < 3; i++) {}
+// console.log(i);
+// let e = 1;
+// for (let e = 0; e < 3; e++) {
+//   console.log(e);
+// }
+// console.log(e);
 //
 //     ⚠️ (라)는 주석을 풀면 ReferenceError 로 스크립트가 그 자리에서 멈춥니다.
 //        그래서 뒤에 있는 문제 7 이 실행되지 않습니다.
@@ -247,5 +312,33 @@ const orders = [
   { customer: "정수진", amount: 17000, status: "done" },
 ];
 // TODO: 여기에 작성
+console.log(`총 주문:${orders.length}`);
+let doneSum = 0;
+let cancelCount = 0;
+let maxAmount = 0;
+let maxCustomer = "";
 
+for (let i = 0; i < orders.length; i++) {
+  if (orders[i].status === "done") {
+    doneSum += orders[i].amount;
+  }
+  if (orders[i].status === "cancel") {
+    cancelCount++;
+  }
+  if (maxAmount < orders[i].amount) {
+    maxAmount = orders[i].amount;
+    maxCustomer = orders[i].customer;
+  }
+}
+console.log(`완료 금액 합계:${doneSum}`);
+console.log(`취소:${cancelCount}`);
+console.log(`최고 금액 고객:${maxCustomer}`);
+
+for (let j = 0; j < orders.length; j++) {
+  if (orders[j].status !== "done") {
+    continue;
+  }
+  let grade = orders[j].amount >= 30000 ? "VIP" : "일반";
+  console.log(`${orders[j].customer}:${grade}`);
+}
 // 다 풀었다면 99_연습문제_심화2_반복문까지_정답.js 와 비교해 보세요.
