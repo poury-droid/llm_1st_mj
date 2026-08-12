@@ -9,7 +9,6 @@
 //
 // 객체를 console.log 로 찍으면 { name: '값', age: 20 } 모양으로 나옵니다.
 
-
 // ───── 문제 1 ───── (개념01)
 // name 이 "이서연", age 가 22 인 객체 user1 을 만들어 출력하세요.
 //
@@ -17,8 +16,11 @@
 // { name: '이서연', age: 22 }
 
 // TODO: 여기에 코드를 쓰세요
-
-
+user1 = {
+  name: "이서연",
+  age: 22,
+};
+console.log(user1);
 // ───── 문제 2 ───── (개념01 점 표기법)
 // 아래 객체에서 price 를 꺼내 출력하세요.
 
@@ -28,8 +30,7 @@ const book2 = { title: "자바스크립트 입문", price: 25000, author: "김�
 // 25000
 
 // TODO: 여기에 코드를 쓰세요
-
-
+console.log(book2.price);
 // ───── 문제 3 ───── (개념01 대괄호 표기법)
 // 아래 변수에 담긴 이름을 이용해 book2 에서 값을 꺼내 출력하세요.
 // 점 표기법으로는 안 됩니다.
@@ -40,8 +41,7 @@ const key3 = "author";
 // 김작가
 
 // TODO: 여기에 코드를 쓰세요
-
-
+console.log(book2[key3]);
 // ───── 문제 4 ───── (개념01 중첩 객체)
 // 아래 객체에서 판매자 이름을 꺼내 출력하세요.
 
@@ -54,8 +54,7 @@ const product4 = {
 // 봄날전자
 
 // TODO: 여기에 코드를 쓰세요
-
-
+console.log(product4.seller.name);
 // ───── 문제 5 ───── (개념01 옵셔널 체이닝)
 // 아래 빈 객체에서 seller.name 을 에러 없이 꺼내려 합니다.
 // 값이 없으면 "판매자 미정" 이 나오도록 한 줄로 출력하세요.
@@ -67,8 +66,7 @@ const empty5 = {};
 // 판매자 미정
 
 // TODO: 여기에 코드를 쓰세요
-
-
+console.log(empty5.seller?.name ?? "판매자 미정");
 // ───── 문제 6 ───── (개념02 추가)
 // 빈 객체 car6 을 만들고 brand 에 "현대", year 에 2024 를 넣어 출력하세요.
 //
@@ -76,8 +74,10 @@ const empty5 = {};
 // { brand: '현대', year: 2024 }
 
 // TODO: 여기에 코드를 쓰세요
-
-
+const car6 = {};
+car6.brand = "현대";
+car6.year = 2024;
+console.log(car6);
 // ───── 문제 7 ───── (개념02 수정)
 // 아래 객체의 stock 을 0 으로 바꾸고 출력하세요.
 
@@ -87,8 +87,8 @@ const item7 = { name: "케이크", stock: 3 };
 // { name: '케이크', stock: 0 }
 
 // TODO: 여기에 코드를 쓰세요
-
-
+item7.stock = 0;
+console.log(item7);
 // ───── 문제 8 ───── (개념02 삭제)
 // 아래 객체에서 oldPrice 속성을 지우고 출력하세요.
 
@@ -96,10 +96,9 @@ const sale8 = { name: "이어폰", price: 89000, oldPrice: 120000 };
 
 // 기대 출력:
 // { name: '이어폰', price: 89000 }
-
 // TODO: 여기에 코드를 쓰세요
-
-
+delete sale8.oldPrice;
+console.log(sale8);
 // ───── 문제 9 ───── (개념02 in)
 // 아래 객체에 "theme" 속성이 있는지, "language" 속성이 있는지 차례로 출력하세요.
 
@@ -110,8 +109,8 @@ const config9 = { theme: "dark", fontSize: 14 };
 // false
 
 // TODO: 여기에 코드를 쓰세요
-
-
+console.log("theme" in config9);
+console.log("fontsize" in config9);
 // ───── 문제 10 ───── (개념02 복사)
 // 아래 객체를 '진짜로' 복사해서 copy10 을 만들고,
 // copy10 의 age 만 99 로 바꾼 뒤 두 객체를 차례로 출력하세요.
@@ -128,8 +127,10 @@ const origin10 = { name: "박지훈", age: 30 };
 // { name: '박지훈', age: 30 }
 
 // TODO: 여기에 코드를 쓰세요
-
-
+const copy10 = { ...origin10 };
+copy10.age = 99;
+console.log(copy10);
+console.log(origin10);
 // ───── 문제 11 ───── (개념03 메소드)
 // name 속성과, "안녕하세요, OOO입니다" 를 출력하는 introduce 메소드를 가진
 // 객체 person11 을 만들고 메소드를 호출하세요.
@@ -139,8 +140,13 @@ const origin10 = { name: "박지훈", age: 30 };
 // 안녕하세요, 최유진입니다
 
 // TODO: 여기에 코드를 쓰세요
-
-
+const person11 = {
+  name: "현명지",
+  introduce() {
+    console.log(`안녕하세요, ${this.name}입니다.`);
+  },
+};
+person11.introduce();
 // ───── 문제 12 ───── (개념03 this 로 값 바꾸기)
 // count 가 0 이고, increase 메소드로 1씩 늘리는 객체 counter12 를 만드세요.
 // increase 를 세 번 부른 뒤 count 를 출력하세요.
@@ -149,8 +155,16 @@ const origin10 = { name: "박지훈", age: 30 };
 // 3
 
 // TODO: 여기에 코드를 쓰세요
-
-
+const counter12 = {
+  count: 0,
+  increase() {
+    this.count++;
+  },
+};
+counter12.increase();
+counter12.increase();
+counter12.increase();
+console.log(counter12.count);
 // ───── 문제 13 ───── (개념04 for...in)
 // 아래 객체를 for...in 으로 돌면서 "이름: 값" 형태로 출력하세요.
 
@@ -162,8 +176,9 @@ const user13 = { name: "정하늘", age: 28, city: "대구" };
 // city: 대구
 
 // TODO: 여기에 코드를 쓰세요
-
-
+for (const [key, value] of Object.entries(user13)) {
+  console.log(`${key} : ${value}`);
+}
 // ───── 문제 14 ───── (개념04 Object.keys)
 // 아래 객체의 속성 개수를 출력하세요.
 
@@ -173,8 +188,9 @@ const scores14 = { 국어: 90, 영어: 85, 수학: 70, 과학: 95 };
 // 4
 
 // TODO: 여기에 코드를 쓰세요
-
-
+const subject = Object.keys(scores14);
+console.log(subject);
+console.log(subject.length);
 // ───── 문제 15 ───── (개념04 Object.values)
 // 위 scores14 의 점수 합계를 출력하세요.
 //
@@ -182,8 +198,12 @@ const scores14 = { 국어: 90, 영어: 85, 수학: 70, 과학: 95 };
 // 340
 
 // TODO: 여기에 코드를 쓰세요
-
-
+const scores2 = Object.values(scores14);
+let scoreTotal = 0;
+for (score of scores2) {
+  scoreTotal += score;
+}
+console.log(scoreTotal);
 // ───── 문제 16 ───── (개념05 객체 배열)
 // 아래는 객체가 담긴 배열입니다. 실무 데이터가 거의 이 모양입니다.
 // 두 번째 상품의 이름과, 세 번째 상품의 가격을 차례로 출력하세요.
@@ -199,8 +219,8 @@ const products16 = [
 // 6000
 
 // TODO: 여기에 코드를 쓰세요
-
-
+console.log(products16[1].name);
+console.log(products16[2].price);
 // ───── 문제 17 ───── (개념05 객체 배열 반복)
 // products16 을 for...of 로 돌면서 "이름 가격원" 을 한 줄씩 출력하세요.
 // 그다음 재고가 0인 상품의 이름을 "품절: OOO" 형태로 출력하세요.
@@ -212,8 +232,14 @@ const products16 = [
 // 품절: 라떼
 
 // TODO: 여기에 코드를 쓰세요
-
-
+for (product of products16) {
+  console.log(`${product.name} ${product.price}`);
+}
+for (product of products16) {
+  if (product.stock === 0) {
+    console.log(`품절:${product.name}`);
+  }
+}
 // ───── 문제 18 ───── [응용]
 // 아래 장바구니에서 각 줄과 합계를 출력하세요.
 // 각 줄의 금액은 price × count 입니다.
@@ -231,8 +257,10 @@ const cart16 = [
 // 합계 23000원
 
 // TODO: 여기에 코드를 쓰세요
-
-
+for(cart of cart16){
+  let 
+  console.log()
+}
 // ───── 문제 19 ───── [도전]
 // 아래 학생 목록에서 평균 점수가 가장 높은 학생의 이름과 평균을 출력하세요.
 // 평균은 소수 첫째 자리까지 표시합니다.
@@ -247,7 +275,6 @@ const students17 = [
 // 이서연 91.7
 
 // TODO: 여기에 코드를 쓰세요
-
 
 // ───── 문제 20 ───── (에러 확인 — 맨 마지막)
 // 아래 두 줄의 주석을 풀고 실행해서 어떤 에러가 나는지 확인하세요.
