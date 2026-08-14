@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -80,11 +80,12 @@
       script 안의 TODO 자리에 코드를 쓰고 저장한 뒤 브라우저를
       <strong>새로고침</strong>하고, 직접 눌러서 확인하세요.<br />
       1~13은 기본, 14는 응용, 15는 [도전], 16은 에러 확인입니다.
-    
+
       <br /><br />
       <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 이 파일 위쪽의
-      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을 만드는 코드입니다.
-      이 자료에서는 가르치지 않습니다. <code>&lt;script&gt;</code> 안부터 읽으세요.
+      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을
+      만드는 코드입니다. 이 자료에서는 가르치지 않습니다.
+      <code>&lt;script&gt;</code> 안부터 읽으세요.
     </p>
 
     <div class="demo">
@@ -105,7 +106,10 @@
       <input type="text" id="keyInput" placeholder="Enter 를 눌러 보세요" />
       <div class="output" id="out6">대기 중</div>
       <a href="https://example.com" id="myLink">이동하면 안 되는 링크</a>
-      <small>(문제 7을 풀기 전에 누르면 실제로 페이지가 이동합니다. 뒤로 가기로 돌아오세요)</small>
+      <small
+        >(문제 7을 풀기 전에 누르면 실제로 페이지가 이동합니다. 뒤로 가기로
+        돌아오세요)</small
+      >
       <div class="output" id="out7">링크를 눌러 보세요</div>
 
       <h3>문제 8~9</h3>
@@ -165,7 +169,12 @@
 
       // 기대 결과 (화면): 버튼을 누르면 out1 이 "눌렀습니다!" 로 바뀝니다.
       // TODO: 여기에 코드를 쓰세요
+      const btn1 = document.querySelector("#btn1");
+      const out1 = document.querySelector("#out1");
 
+      btn1.addEventListener("click", () => {
+        out1.textContent = "눌렀습니다!";
+      });
       // ───── 문제 2 ───── (개념01 카운터)
       // btn2 를 누를 때마다 out2 의 숫자가 1씩 올라가게 하세요.
       // 세는 변수를 어디에 만들어야 하는지 주의하세요.
@@ -173,7 +182,14 @@
       // 기대 결과 (화면): 버튼을 누를 때마다 out2 가 1 → 2 → 3 으로 올라갑니다.
       //                  누를 때마다 계속 1 이면 세는 변수를 콜백 안에 만든 것입니다.
       // TODO: 여기에 코드를 쓰세요
+      const btn2 = document.querySelector("#btn2");
+      const out2 = document.querySelector("#out2");
 
+      let count = 0;
+      btn2.addEventListener("click", () => {
+        count++;
+        out2.textContent = count;
+      });
       // ───── 문제 3 ───── (개념01 토글)
       // btn3 을 누를 때마다 out3 에 on 클래스가 붙었다 떨어지고,
       // 글자도 "켜짐" / "꺼짐" 으로 바뀌게 하세요.
@@ -181,7 +197,14 @@
       // 기대 결과 (화면): 처음에는 "꺼짐" 입니다.
       //                  한 번 누르면 "켜짐" + 배경색이 바뀌고, 또 누르면 "꺼짐" 으로 돌아옵니다.
       // TODO: 여기에 코드를 쓰세요
-
+      const btn3 = document.querySelector("#btn3");
+      const out3 = document.querySelector("#out3");
+      let isOn = false;
+      btn3.addEventListener("click", () => {
+        isOn = !isOn;
+        out3.classList.toggle("on", isOn); // 10단원 개념03
+        out3.textContent = isOn ? "켜짐" : "꺼짐";
+      });
       // ───── 문제 4 ───── (개념02 e.target)
       // menuBtn 클래스를 가진 버튼 두 개 중 무엇을 눌렀든,
       // out4 에 "아메리카노를 골랐습니다" 처럼 그 버튼의 글자가 나오게 하세요.

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -69,14 +69,16 @@
     <h1>10단원 연습문제 — DOM 조작</h1>
 
     <p class="guide">
-      script 안의 TODO 자리에 코드를 쓰고 저장한 뒤, 브라우저를 <strong>새로고침</strong>
-      하세요. <strong>F12 → Console</strong> 도 함께 보세요.<br />
+      script 안의 TODO 자리에 코드를 쓰고 저장한 뒤, 브라우저를
+      <strong>새로고침</strong> 하세요. <strong>F12 → Console</strong> 도 함께
+      보세요.<br />
       1~12는 기본, 13은 응용, 14는 [도전], 15는 에러 확인입니다.
-    
+
       <br /><br />
       <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 이 파일 위쪽의
-      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을 만드는 코드입니다.
-      이 자료에서는 가르치지 않습니다. <code>&lt;script&gt;</code> 안부터 읽으세요.
+      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을
+      만드는 코드입니다. 이 자료에서는 가르치지 않습니다.
+      <code>&lt;script&gt;</code> 안부터 읽으세요.
     </p>
 
     <div class="demo">
@@ -131,14 +133,16 @@
       // <h2 id="mainTitle">원래 제목</h2>
 
       // TODO: 여기에 코드를 쓰세요
-
+      const mainTitle = document.querySelector("#mainTitle");
+      console.log(mainTitle);
       // ───── 문제 2 ───── (개념02 textContent)
       // id 가 target1 인 요소의 글자를 "바꿨습니다!" 로 바꾸세요.
       //
       // 기대 결과 (화면): 해당 줄이 "바꿨습니다!" 로 보입니다
 
       // TODO: 여기에 코드를 쓰세요
-
+      const target1 = document.querySelector("#target1");
+      target1.textContent = "바꿨습니다!";
       // ───── 문제 3 ───── (개념02 innerHTML)
       // id 가 target2 인 요소에 <strong>굵은 글자</strong> 를 넣어
       // 실제로 굵게 보이도록 하세요.
@@ -147,7 +151,8 @@
       //   <strong>굵은 글자</strong> 라는 글자가 그대로 보이면 textContent 를 쓴 것입니다.
       //
       // TODO: 여기에 코드를 쓰세요
-
+      const target2 = document.querySelector("#target2");
+      target2.innerHTML = "<strong>굵은 글자</strong>";
       // ───── 문제 4 ───── (개념01 querySelectorAll)
       // 클래스가 item 인 요소를 모두 골라 items 라는 변수에 담고,
       // 그 개수를 콘솔에 찍으세요.
@@ -156,7 +161,8 @@
       // 기대 결과 (콘솔): 3
 
       // TODO: 여기에 코드를 쓰세요
-
+      const items = document.querySelectorAll(".item");
+      console.log(items.length);
       // ───── 문제 5 ───── (개념01 forEach)
       // 클래스가 item 인 요소들의 글자를 한 줄씩 콘솔에 찍으세요.
       // 문제 4에서 만든 items 를 그대로 쓰세요.
@@ -168,7 +174,7 @@
       // 항목 C
 
       // TODO: 여기에 코드를 쓰세요
-
+      items.forEach((i) => console.log(i.textContent));
       // ───── 문제 6 ───── (개념03 style)
       // id 가 styleTarget 인 요소의 글자색을 흰색, 배경색을 "#2d6cdf" 로 바꾸세요.
       // CSS 이름을 그대로 쓰면 안 됩니다.
