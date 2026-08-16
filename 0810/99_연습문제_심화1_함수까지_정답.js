@@ -286,7 +286,9 @@ console.log("===== 문제 7 =====");
   function printReport(student) {
     const total = getTotal(student.scores);
     const avg = total / student.scores.length;
-    console.log(`${student.name} | 합계 ${total} | 평균 ${avg} | ${getGrade(avg)}`);
+    console.log(
+      `${student.name} | 합계 ${total} | 평균 ${avg} | ${getGrade(avg)}`,
+    );
   }
 
   for (let i = 0; i < students.length; i++) {

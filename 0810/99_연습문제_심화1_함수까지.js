@@ -102,7 +102,18 @@ console.log("===== 문제 1 =====");
 console.log("===== 문제 2 =====");
 const fruits = ["사과", "바나나", "참외"];
 // TODO: 여기에 작성
+function runEach(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i], i); // 무엇을 할지는 넘겨받은 함수가 정함
+  }
+}
 
+runEach(fruits, (name, i) => console.log(`${i + 1}번: ${name}`));
+// 출력: 1번: 사과 / 2번: 바나나 / 3번: 참외
+
+runEach(fruits, (name) => {
+  if (name.length >= 3) console.log(`긴 이름: ${name}`);
+});
 // ═══ 문제 3 ═══ 구조 분해로 짧게 쓰기 [응용]
 // (1) 요구사항: 아래 데이터를 구조 분해로 꺼내 세 줄을 출력하세요.
 //     - 배열 구조 분해로 좌표에서 위도·경도를 꺼내 출력 (고도는 건너뜁니다)
