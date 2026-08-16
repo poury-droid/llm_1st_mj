@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>11단원 개념03 - input 과 change</title>
+
+    <script src="./연습지.js" defer></script>
+    <link rel="stylesheet" href="./연습지.css" />
+  </head>
+  <body>
+    <h1>개념 03 — input 과 change</h1>
+
+    <p class="guide">
+      브라우저로 열고 <strong>직접 타이핑</strong>해 보세요. 글자를 칠 때마다
+      결과가 바로바로 바뀝니다. <strong>F12 → Console</strong> 도 함께 보세요.
+
+      <br /><br />
+      <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 이 파일 위쪽의
+      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을
+      만드는 코드입니다. 이 자료에서는 가르치지 않습니다.
+      <code>&lt;script&gt;</code> 안부터 읽으세요.
+    </p>
+
+    <div class="demo">
+      <h3>① input — 글자가 바뀔 때마다</h3>
+      <label for="nameInput">이름</label>
+      <input type="text" id="nameInput" placeholder="이름을 입력하세요" />
+      <div class="output" id="out1">여기에 실시간으로 나옵니다</div>
+
+      <h3>② change — 다 입력하고 벗어났을 때</h3>
+      <label for="changeInput">이름 (input 과 비교)</label>
+      <input
+        type="text"
+        id="changeInput"
+        placeholder="치고 나서 Tab 을 눌러 보세요"
+      />
+      <div class="output" id="out2">여기는 벗어날 때만 바뀝니다</div>
+
+      <h3>③ 글자 수 세기</h3>
+      <label for="memoArea">메모 (20자 이내)</label>
+      <textarea
+        id="memoArea"
+        rows="2"
+        cols="40"
+        placeholder="입력해 보세요"
+      ></textarea>
+      <div class="output" id="out3">0 / 20</div>
+
+      <h3>④ 실시간 계산</h3>
+      <label for="priceInput">가격</label>
+      <input type="number" id="priceInput" value="4500" />
+      <label for="countInput">개수</label>
+      <input type="number" id="countInput" value="2" />
+      <div class="output" id="out4">합계: 9000원</div>
+
+      <h3>⑤ 체크박스와 선택 상자</h3>
+      <label><input type="checkbox" id="agreeCheck" /> 약관에 동의합니다</label>
+      <label for="sizeSelect">사이즈</label>
+      <select id="sizeSelect">
+        <option value="S">작은 것</option>
+        <option value="M" selected>보통</option>
+        <option value="L">큰 것</option>
+      </select>
+      <div class="output" id="out5">동의: 안 함 / 사이즈: M</div>
+    </div>
+  </body>
+</html>
