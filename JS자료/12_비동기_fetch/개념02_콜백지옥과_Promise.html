@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -52,13 +52,14 @@
     <h1>개념 02 — 콜백 지옥과 Promise</h1>
 
     <p class="guide">
-      브라우저로 열고 <strong>F12 → Console</strong> 을 반드시 함께 보세요. 버튼을 누르면
-      단계마다 1초씩 걸립니다.
-    
+      브라우저로 열고 <strong>F12 → Console</strong> 을 반드시 함께 보세요.
+      버튼을 누르면 단계마다 1초씩 걸립니다.
+
       <br /><br />
       <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 이 파일 위쪽의
-      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을 만드는 코드입니다.
-      이 자료에서는 가르치지 않습니다. <code>&lt;script&gt;</code> 안부터 읽으세요.
+      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을
+      만드는 코드입니다. 이 자료에서는 가르치지 않습니다.
+      <code>&lt;script&gt;</code> 안부터 읽으세요.
     </p>
 
     <div class="demo">
@@ -179,6 +180,24 @@
           setTimeout(() => {
             console.log("1. 주문 완료 (Promise)");
             resolve("주문번호-200");
+          }, 3000);
+        });
+      }
+
+      function pay(orderNo) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("2. 결제 완료");
+            resolve(`${orderNo} 결제됨`);
+          }, 1000);
+        });
+      }
+
+      function receipt(payInfo) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("3. 영수증 발급");
+            resolve(`영수증: ${payInfo}`);
           }, 1000);
         });
       }
@@ -255,13 +274,15 @@
       // 돌려준 게 없으니(undefined) 기다릴 것도 없다고 판단해 버립니다.
 
       // Promise 객체를 그냥 찍어 보면 이렇게 생겼습니다.
-      const p = orderP();
+      const p = orderP()
+        .then((orderNo) => orderNo + " (확인됨)")
+        .then((result) => (out2.textContent = result));
       console.log(p);
       // 콘솔: Promise { <pending> }
       // pending = 아직 결과가 안 나왔다는 뜻입니다.
       // fulfilled(성공) 또는 rejected(실패) 로 바뀝니다.
 
-      p.then((value) => console.log("나중에 받은 값:", value));
+      p.then((value) => console.log("확인됨", value));
       // 콘솔: (1초 뒤) 나중에 받은 값: 주문번호-200
 
       // ✏️ 직접 해보기 3 — then 을 하나 더 붙여, 받은 주문번호 뒤에 " (확인됨)" 을

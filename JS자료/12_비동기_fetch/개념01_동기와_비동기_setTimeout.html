@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -51,13 +51,14 @@
     <h1>개념 01 — 동기와 비동기, setTimeout</h1>
 
     <p class="guide">
-      브라우저로 열고 <strong>F12 → Console</strong> 을 반드시 함께 보세요. 이 단원은
-      <strong>실행 순서</strong>가 핵심이라 콘솔을 봐야 이해됩니다.
-    
+      브라우저로 열고 <strong>F12 → Console</strong> 을 반드시 함께 보세요. 이
+      단원은 <strong>실행 순서</strong>가 핵심이라 콘솔을 봐야 이해됩니다.
+
       <br /><br />
       <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 이 파일 위쪽의
-      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을 만드는 코드입니다.
-      이 자료에서는 가르치지 않습니다. <code>&lt;script&gt;</code> 안부터 읽으세요.
+      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을
+      만드는 코드입니다. 이 자료에서는 가르치지 않습니다.
+      <code>&lt;script&gt;</code> 안부터 읽으세요.
     </p>
 
     <div class="demo">
@@ -137,15 +138,15 @@
       const out1 = document.querySelector("#out1");
 
       document.querySelector("#timerBtn").addEventListener("click", () => {
-        out1.textContent = "3초를 세는 중...";
+        out1.textContent = "1초를 세는 중...";
         console.log("타이머 시작");
 
         setTimeout(() => {
-          out1.textContent = "3초가 지났습니다!";
-          console.log("3초 경과");
-        }, 3000);
+          out1.textContent = "1초가 지났습니다!";
+          console.log("1초 경과");
+        }, 1000);
 
-        console.log("이 줄은 3초를 기다리지 않고 바로 실행됩니다");
+        console.log("이 줄은 1초를 기다리지 않고 바로 실행됩니다");
       });
 
       // 버튼을 누르면 콘솔에
@@ -184,6 +185,10 @@
         // 콘솔: 안에서 읽으면: 받아온 값
       }, 1000);
 
+      setTimeout(() => {
+        console.log("밖에서 읽으면:", result);
+        // 콘솔: 안에서 읽으면: 받아온 값
+      }, 1500);
       // 이 "안으로 넣기" 가 계속 겹치면 코드가 깊어집니다.
       // 그 문제를 해결하는 것이 개념02의 Promise 와 개념04의 async/await 입니다.
 
@@ -204,7 +209,7 @@
           return; // 두 번 눌러도 두 개가 돌지 않도록 (조기 반환)
         }
 
-        let count = 5;
+        let count = 10;
         out2.textContent = count;
         console.log("카운트다운 시작");
 

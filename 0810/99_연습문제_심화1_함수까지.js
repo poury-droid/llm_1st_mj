@@ -131,7 +131,15 @@ const coords = [37.5665, 126.978, 38];
 const book = { title: "어린 왕자", author: "생텍쥐페리", year: 1943 };
 const scores = [90, 85, 77, 92];
 // TODO: 여기에 작성
+const [lat, lng] = coords; // 고도는 안 꺼내면 그만
+console.log(`위도 ${lat} / 경도 ${lng}`); // 출력: 위도 37.5665 / 경도 126.978
+const printBook = ({ title, author }) => {
+  console.log(`${title} - ${author}`);
+};
+printBook(book); // 출력: 어린 왕자 - 생텍쥐페리
 
+const [first, ...rest] = scores;
+console.log(`첫 점수: ${first} / 나머지:`, rest); // 출력: 첫 점수: 90 / 나머지: [ 85, 77, 92 ]
 // ┌──────────────────────────────────────────────────────────┐
 // │ ⏱ 여기까지가 1교시 목표 분량입니다.                        │
 // │   아래 문제 4~7 은 다음 교시나 복습 때 이어서 푸세요.       │
